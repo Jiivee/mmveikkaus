@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+<form method="POST" action="." class="form" id="match-bet-form">
+    <div class="match-bet-header">
+        <div class="match-bet-header-time">Aika</div>
+        <div class="match-bet-header-group">Lohko</div>
+        <div class="match-bet-header-score">Tulosveikkaus</div>
+        <div class="match-bet-header-mark">Merkkiveikkaus</div>
+    </div>
+    {% for bet in bets %}
+    <div class="match-bet" id="match-bet-{{bet.match_id}}">
+        <div class="match-bet-time">{{bet.match.get_date()}} {{bet.match.get_time()}}</div>
+        <div class="match-bet-group">{{bet.match.group.name}}</div>
+        <img class="match-bet-flag" src="../static/images/flags/{{bet.match.home_team.short}}.png">
+        {% if bet.match.home_team.name!='Norsunluurannikko' %}
+        <div class="match-bet-home-team">{{bet.match.home_team.name}}</div>
+        {% else %}
+        <div class="match-bet-home-team">Norsunluu-rannikko</div>
+        {% endif %}
+        <div class="match-bet-texts">
+            <input type="text" id="match-bet-home-{{bet.match_id}}" name="home-{{bet.match_id}}" class="bet-goals" maxlength="2" onkeypress='validate(event)' value="">
+            <span>-</span>
+            <input type="text" id="match-bet-away-{{bet.match_id}}" name="away-{{bet.match_id}}" class="bet-goals" maxlength="2" onkeypress='validate(event)' value="">
+        </div>
+        {% if bet.match.away_team.name!='Norsunluurannikko' %}
+        <div class="match-bet-away-team">{{bet.match.away_team.name}}</div>
+        {% else %}
+        <div class="match-bet-away-team">Norsunluu-rannikko</div>
+        {% endif %}
+        <img class="match-bet-flag" src="../static/images/flags/{{bet.match.away_team.short}}.png">
+        <div class="match-bet-radios">
+            <input type="radio" class="radio-button" id="radio1-{{bet.match_id}}" name="{{bet.match_id}}" value="1">
+            <label id="label1-{{bet.match_id}}" for="radio1-{{bet.match_id}}">1</label>
+            <input type="radio" class="radio-button" id="radiox-{{bet.match_id}}" name="{{bet.match_id}}" value="X">
+            <label id="labelx-{{bet.match_id}}" for="radiox-{{bet.match_id}}">X</label>
+            <input type="radio" class="radio-button" id="radio2-{{bet.match_id}}" name="{{bet.match_id}}" value="2">
+            <label id="label2-{{bet.match_id}}" for="radio2-{{bet.match_id}}">2</label>
+        </div>
+    </div>
+    {% endfor %}
+</form>
+<input type="submit" id="bet-button" name="submit" value="Save" class="button">
+
+{% endblock %}

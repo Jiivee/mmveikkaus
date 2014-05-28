@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+
+<form method="POST" action="." class="form" id="match-bet-form">
+    {% for bet in bets %}
+    <div class="match-bet" id="match-bet-{{bet.match_id}}">
+        <div class="match-bet-teams">{{bet.match.home_team.name}} - {{bet.match.away_team.name}}</div>
+        {% if bet.match.home_goals!=None %}
+        <span>{{bet.match.home_goals}}</span>
+        {% else %}
+        <span>x</span>
+        {% endif %}
+        <span>-</span>
+        {% if bet.match.away_goals!=None %}
+        <span>{{bet.match.away_goals}}</span>
+        {% else %}
+        <span>x</span>
+        {% endif %}
+        <input type="text" name="home-{{bet.match_id}}" class="bet-goals" value="{{bet.bet_home_goals}}">
+        <span>-</span>
+        <input type="text" name="away-{{bet.match_id}}" class="bet-goals" value="{{bet.bet_away_goals}}">
+        {% if bet.mark=='1' %}
+        <input type="radio" name="{{bet.match_id}}" value="1" checked="checked">
+        {% else %}
+        <input type="radio" name="{{bet.match_id}}" value="1">
+        {% endif %}
+        {% if bet.mark=='X' %}
+        <input type="radio" name="{{bet.match_id}}" value="X" checked="checked">
+        {% else %}
+        <input type="radio" name="{{bet.match_id}}" value="X">
+        {% endif %}
+        {% if bet.mark=='2' %}
+        <input type="radio" name="{{bet.match_id}}" value="2" checked="checked">
+        {% else %}
+        <input type="radio" name="{{bet.match_id}}" value="2">
+        {% endif %}
+        <span>{{bet.points}}</span>
+    </div>
+    {% endfor %}
+</form>
+
+<input type="submit" id="bet-button" name="submit" value="Save" class="button">
+
+
+
+{% endblock %}

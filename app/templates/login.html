@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+
+<form method="POST" action="." class="form">
+    {{ form.csrf_token }}
+    <div>
+        {% if form.email.errors %}
+        <div class="input-field-div">{{ form.email(placeholder="Sähköposti", class="input-field input-field-error") }}</div>
+        <div class="errorrr">{{form.email.errors[0]}}</div>
+        {% else %}
+        <div class="input-field-div">{{ form.email(placeholder="Sähköposti", class="input-field") }}</div>
+        {% endif %}
+    </div>
+    <div>
+        {% if form.password.errors %}
+        <div class="input-field-div">{{ form.password(placeholder="Salasana", class="input-field input-field-error") }}</div>
+        <div class="errorrr">{{form.password.errors[0]}}</div>
+        {% else %}
+        <div class="input-field-div">{{ form.password(placeholder="Salasana", class="input-field") }}</div>
+        {% endif %}
+    </div>
+    <input type="submit" name="submit" value="Kirjaudu" class="btn btn-success input-field-button">
+</form>
+
+{% endblock %}

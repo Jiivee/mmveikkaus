@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="index">
+    <div class="header">Kaikki pelit</div>  
+    {% for match in matches %}      
+    <div class="next-match">            
+        <div class="match-time">{{match.get_date()}} {{match.get_time()}}</div>
+        <div class="match-group">{{match.group.name}}</div>
+        <img class="match-flag" src="../static/images/flags/{{match.home_team.short}}.png">
+        {% if match.home_team.name!='Norsunluurannikko' %}
+        <div class="match-home-team">{{match.home_team.name}}</div>
+        {% else %}
+        <div class="match-home-team">Norsunluu-rannikko</div>
+        {% endif %}
+
+        {% if current_user.role==1 %}
+        <a href="{{ url_for('set_match_result', id=match.id) }}">
+        {% endif %}   
+        {% if match.home_goals != None %}
+        <span class="home-goals">{{match.home_goals}}</span>
+        {% else %}
+        <span class="home-goals">X</span>
+        {% endif %}
+        <span class="line">-</span>
+        {% if match.away_goals != None %}
+        <span class="away-goals">{{match.away_goals}}</span>
+        {% else %}
+        <span class="away-goals">X</span>
+        {% endif %}
+        {% if current_user.role==1 %}
+        </a>
+        {% endif %}
+
+        {% if match.away_team.name!='Norsunluurannikko' %}
+        <div class="match-away-team">{{match.away_team.name}}</div>
+        {% else %}
+        <div class="match-away-team">Norsunluu-rannikko</div>
+        {% endif %}
+        <img class="match-flag" src="../static/images/flags/{{match.away_team.short}}.png">
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

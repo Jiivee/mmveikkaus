@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="points">
+    {% for user in users %}
+    <div class="user">
+        <div class="name">{{user.name}}</div>
+        <div class="total_points">{{user.total_points}}</div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
