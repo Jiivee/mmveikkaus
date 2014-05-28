@@ -7,6 +7,7 @@ Flask-Security==1.7.2
 Flask-WTF==0.9.5
 Jinja2==2.7.2
 MarkupSafe==0.21
+psycopg2==2.5
 SQLAlchemy==0.9.4
 SQLAlchemy-Utils==0.25.4
 WTForms==1.0.5
