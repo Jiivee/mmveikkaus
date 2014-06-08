@@ -1,5 +1,5 @@
 from flask.ext.wtf import Form
-from wtforms import TextField, IntegerField, RadioField, validators, ValidationError
+from wtforms import TextField, PasswordField, RadioField, validators, ValidationError
 from wtforms.validators import InputRequired, Length
 from models import User
 
@@ -22,9 +22,8 @@ class LoginForm(Form):
         InputRequired(),
         Length(max=50)
     ])
-    password = TextField('Password', validators=[
+    password = PasswordField('Password', validators=[
         InputRequired(),
-        Length(min=2, max=50),
         validate_password
     ])
 
@@ -39,7 +38,7 @@ class RegistrationForm(Form):
         Length(max=50),
         validate_email
     ])
-    password = TextField('Password', validators=[
+    password = PasswordField('Password', validators=[
         InputRequired(),
         Length(min=2, max=50)
     ])

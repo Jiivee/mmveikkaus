@@ -1,12 +1,24 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="points">
-    {% for user in users %}
-    <div class="user">
-        <div class="name">{{user.name}}</div>
-        <div class="total_points">{{user.total_points}}</div>
-    </div>
-    {% endfor %}
+    <table>
+        <tr class="user">
+        {% for match in matches %}
+            <td>{{match.home-team}}</td>
+        {% endfor %}
+        </tr>
+
+
+        {% for user in users %}
+        <tr class="user">
+            <td class="name">{{user.name}}</td>
+            {% for bet in user.match_bets %}
+            <td class="point">{{bet.points}}</td>
+            {% endfor %}
+            <td class="total-points">{{user.total_points}}</td>
+        </tr>
+        {% endfor %}
+    </table>
 </div>
 
 {% endblock %}

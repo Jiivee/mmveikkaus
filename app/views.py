@@ -77,7 +77,9 @@ def set_match_result(id):
 @app.route('/points/', methods=['GET', 'POST'])
 @login_required
 def points():
-    users = User.query.order_by(User.total_points)
+    matches = Match.query.all()
+    print matches
+    users = User.query.order_by(User.total_points.desc())
     return render_template("points.html", current_user=current_user, users=users)
 
 

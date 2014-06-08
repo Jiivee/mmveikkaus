@@ -212,6 +212,8 @@ html, body {
     text-align: center;
     color: rgb(12, 69, 3);
     font-weight: bold;
+    padding-left: 0;
+    padding-right: 0;
 }
 
 .bet-goals-missing {
@@ -382,4 +384,39 @@ input[type=radio]:checked + label {
     width: 170px;
 }
 
+
+
+
+.points {
+    padding: 0 40px 0 40px;
+}
+
+.points table{
+    table-layout: fixed;
+    width: 100%;
+    font-size: 90%;
+}
+
+.points .user {
+
+}
+
+.points .user:nth-child(even) {
+    background-color: rgba(119,212,42,0.1);
+}
+
+.points .user:nth-child(odd) {
+    background-color: rgba(119,212,42,0.4);
+}
+
+.points .user .name {
+
+}
+
+.points .user .point {
+    width: 10px;
+}
+
+.points .user .total-points {
+}
 
