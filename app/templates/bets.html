@@ -1,45 +1,90 @@
 {% extends "base.html" %}
 {% block content %}
 
-<form method="POST" action="." class="form" id="match-bet-form">
+<div class="own-bets">
+    <div class="bet-header">
+        <div class="bet-header-group">Lohko</div>
+        <div class="bet-header-score">Tulos</div>
+        <div class="bet-header-bet">Tulosveikkaus</div>
+        <div class="bet-header-points">Pisteet</div>
+    </div>
     {% for bet in bets %}
-    <div class="match-bet" id="match-bet-{{bet.match_id}}">
-        <div class="match-bet-teams">{{bet.match.home_team.name}} - {{bet.match.away_team.name}}</div>
-        {% if bet.match.home_goals!=None %}
-        <span>{{bet.match.home_goals}}</span>
+    <div class="bet">
+        <div class="match-time">{{bet.match.get_date()}} {{bet.match.get_time()}}</div>
+        <div class="match-group">{{bet.match.group.name}}</div>
+        <img class="match-flag" src="../static/images/flags/{{bet.match.home_team.short}}.png">
+        {% if bet.match.home_team.name!='Norsunluurannikko' %}
+        <div class="match-home-team">{{bet.match.home_team.name}}</div>
         {% else %}
-        <span>x</span>
+        <div class="match-home-team">Norsunluu-rannikko</div>
         {% endif %}
-        <span>-</span>
-        {% if bet.match.away_goals!=None %}
-        <span>{{bet.match.away_goals}}</span>
+
+        {% if bet.match.home_goals != None %}
+        <span class="home-goals">{{bet.match.home_goals}}</span>
         {% else %}
-        <span>x</span>
+        <span class="home-goals">X</span>
         {% endif %}
-        <input type="text" name="home-{{bet.match_id}}" class="bet-goals" value="{{bet.bet_home_goals}}">
-        <span>-</span>
-        <input type="text" name="away-{{bet.match_id}}" class="bet-goals" value="{{bet.bet_away_goals}}">
-        {% if bet.mark=='1' %}
-        <input type="radio" name="{{bet.match_id}}" value="1" checked="checked">
+        <span class="line">-</span>
+        {% if bet.match.away_goals != None %}
+        <span class="away-goals">{{bet.match.away_goals}}</span>
         {% else %}
-        <input type="radio" name="{{bet.match_id}}" value="1">
+        <span class="away-goals">X</span>
         {% endif %}
-        {% if bet.mark=='X' %}
-        <input type="radio" name="{{bet.match_id}}" value="X" checked="checked">
+
+        {% if bet.match.away_team.name!='Norsunluurannikko' %}
+        <div class="match-away-team">{{bet.match.away_team.name}}</div>
         {% else %}
-        <input type="radio" name="{{bet.match_id}}" value="X">
+        <div class="match-away-team">Norsunluu-rannikko</div>
         {% endif %}
-        {% if bet.mark=='2' %}
-        <input type="radio" name="{{bet.match_id}}" value="2" checked="checked">
+        <img class="match-flag" src="../static/images/flags/{{bet.match.away_team.short}}.png">
+
+        {% if bet.bet_home_goals != None %}
+            {% if bet.match.home_goals != None %}
+                {% if bet.bet_home_goals == bet.match.home_goals %}
+                <span class="answer-home right-answer">{{bet.bet_home_goals}}</span>
+                {% else %}
+                <span class="answer-home right-answer wrong-answer">{{bet.bet_home_goals}}</span>
+                {% endif %}
+            {% else %}
+                <span class="answer-home answer">{{bet.bet_home_goals}}</span>
+            {% endif %}
         {% else %}
-        <input type="radio" name="{{bet.match_id}}" value="2">
+        <span class="answer-home answer">X</span>
         {% endif %}
-        <span>{{bet.points}}</span>
+        <span class="line">-</span>
+        {% if bet.bet_away_goals != None %}
+            {% if bet.match.away_goals != None %}
+                {% if bet.bet_away_goals == bet.match.away_goals %}
+                <span class="away-goals right-answer">{{bet.bet_away_goals}}</span>
+                {% else %}
+                <span class="away-goals right-answer wrong-answer">{{bet.bet_away_goals}}</span>
+                {% endif %}
+            {% else %}
+                <span class="answer">{{bet.bet_away_goals}}</span>
+            {% endif %}
+        {% else %}
+        <span class="answer">X</span>
+        {% endif %}
+
+        {% if bet.mark != None %}
+            {% if bet.match.mark != None %}
+                {% if bet.mark == bet.match.mark %}
+                    <span class="answer-mark right-answer">{{bet.mark}}</span>
+                {% else %}
+                    <span class="answer-mark right-answer wrong-answer">{{bet.mark}}</span>
+                {% endif %}
+            {% else %}
+                <span class="answer-mark answer">{{bet.mark}}</span>
+            {% endif %}
+        {% else %}
+            <span class="answer-mark answer"></span>
+        {% endif %}
+        <span class="bet-points">{{bet.points}}</span>
+
+
     </div>
     {% endfor %}
-</form>
-
-<input type="submit" id="bet-button" name="submit" value="Save" class="button">
+</div>
 
 
 

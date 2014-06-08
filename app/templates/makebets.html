@@ -18,9 +18,17 @@
         <div class="match-bet-home-team">Norsunluu-rannikko</div>
         {% endif %}
         <div class="match-bet-texts">
+            {% if bet.bet_home_goals == None %}
             <input type="number" id="match-bet-home-{{bet.match_id}}" name="home-{{bet.match_id}}" class="bet-goals" maxlength="2" onkeypress='validate(event)' onKeyDown="if(this.value.length==2 && event.keyCode != 8) return false;" max="99" value="">
+            {% else %}
+            <input type="number" id="match-bet-home-{{bet.match_id}}" name="home-{{bet.match_id}}" class="bet-goals" maxlength="2" onkeypress='validate(event)' onKeyDown="if(this.value.length==2 && event.keyCode != 8) return false;" max="99" value="{{bet.bet_home_goals}}">
+            {% endif %}
             <span>-</span>
+            {% if bet.bet_away_goals == None %}
             <input type="number" id="match-bet-away-{{bet.match_id}}" name="away-{{bet.match_id}}" class="bet-goals" maxlength="2" onkeypress='validate(event)' onKeyDown="if(this.value.length==2 && event.keyCode != 8) return false;" max="99" value="">
+            {% else %}
+            <input type="number" id="match-bet-away-{{bet.match_id}}" name="away-{{bet.match_id}}" class="bet-goals" maxlength="2" onkeypress='validate(event)' onKeyDown="if(this.value.length==2 && event.keyCode != 8) return false;" max="99" value="{{bet.bet_away_goals}}">
+            {% endif %}
         </div>
         {% if bet.match.away_team.name!='Norsunluurannikko' %}
         <div class="match-bet-away-team">{{bet.match.away_team.name}}</div>
@@ -29,11 +37,11 @@
         {% endif %}
         <img class="match-bet-flag" src="../static/images/flags/{{bet.match.away_team.short}}.png">
         <div class="match-bet-radios">
-            <input type="radio" class="radio-button" id="radio1-{{bet.match_id}}" name="{{bet.match_id}}" value="1">
+            <input type="radio" class="radio-button" id="radio1-{{bet.match_id}}" name="{{bet.match_id}}" value="1" {% if bet.mark == '1' %} checked {% endif %}>
             <label id="label1-{{bet.match_id}}" for="radio1-{{bet.match_id}}">1</label>
-            <input type="radio" class="radio-button" id="radiox-{{bet.match_id}}" name="{{bet.match_id}}" value="X">
+            <input type="radio" class="radio-button" id="radiox-{{bet.match_id}}" name="{{bet.match_id}}" value="X" {% if bet.mark == 'X' %} checked {% endif %}>
             <label id="labelx-{{bet.match_id}}" for="radiox-{{bet.match_id}}">X</label>
-            <input type="radio" class="radio-button" id="radio2-{{bet.match_id}}" name="{{bet.match_id}}" value="2">
+            <input type="radio" class="radio-button" id="radio2-{{bet.match_id}}" name="{{bet.match_id}}" value="2" {% if bet.mark == '2' %} checked {% endif %}>
             <label id="label2-{{bet.match_id}}" for="radio2-{{bet.match_id}}">2</label>
         </div>
     </div>

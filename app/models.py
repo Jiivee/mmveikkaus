@@ -58,6 +58,7 @@ class Match(db.Model):
     group = db.relationship("Group")
     home_goals = db.Column(db.Integer)
     away_goals = db.Column(db.Integer)
+    mark = db.Column(db.String(1))
 
     def __init__(self, home_team, away_team, group, time):
         self.home_team = home_team
@@ -91,17 +92,20 @@ class Match(db.Model):
         for bet in bets:
             points = 0
             right_answers = 0
-            if self.home_goals == bet.bet_home_goals:
+            if str(self.home_goals) == str(bet.bet_home_goals):
+                print "home_goals"
                 points += 1
                 right_answers += 1
-            if self.away_goals == bet.bet_away_goals:
+            if str(self.away_goals) == str(bet.bet_away_goals):
+                print "away_goals"
                 points += 1
                 right_answers += 1
-            if self.mark == bet.mark:
+            if str(self.mark) == str(bet.mark):
                 points += 2
                 right_answers += 1
             if right_answers == 3:
                 points += 1
+            print points
             user = User.query.filter(User.id==bet.user_id).first()
             user.total_points -= bet.points
             bet.set_points(points)

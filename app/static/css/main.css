@@ -6,6 +6,7 @@ html, body {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    box-sizing: border-box
 }
 
 .input-field {
@@ -345,13 +346,6 @@ input[type=radio]:checked + label {
     vertical-align: middle;
 }
 
-
-
-
-
-
-
-
 .index .group {
     width: 32%;
     display: inline-block;
@@ -419,6 +413,207 @@ input[type=radio]:checked + label {
 
 .points .user .total-points {
 }
+
+
+
+
+.own-bets {
+    padding: 0 40px 0 40px;
+}
+
+.own-bets .header {
+    font-size: 115%;
+    font-weight: bold;
+    padding-bottom: 5px;
+    padding-top: 20px;
+    border-bottom: 1px solid rgb(119,212,42);
+}
+
+.own-bets .bet-header {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgb(119,212,42);
+    padding-bottom: 3px;
+    font-weight: bold;
+    font-size: 85%;
+}
+
+.own-bets .bet-header-group {
+    display: inline-block;
+    width: 237px;
+}
+
+.own-bets .bet-header-score {
+    display: inline-block;
+    width: 250px;
+}
+
+.own-bets .bet-header-bet {
+    display: inline-block;
+    width: 120px;
+}
+
+.own-bets .bet-header-points {
+    display: inline-block;
+}
+
+
+.own-bets .bet {
+    text-align: left;
+}
+
+.own-bets .match-time {
+    width: 0px;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 90%;
+    font-weight: bold;
+    text-align: left;
+    overflow: hidden;
+}
+
+.own-bets .match-group {
+    display: inline-block;
+    vertical-align: middle;
+    width: 30px;
+    font-size: 110%;
+    font-weight: bold;
+    text-align: left;
+}
+
+.own-bets .match-home-team {
+    display: inline-block;
+    vertical-align: middle;
+    width: 150px;
+    font-weight: bold;
+    font-size: 110%;
+    padding-left: 2px;
+    text-align: left;
+}
+
+.own-bets .match-away-team {
+    display: inline-block;
+    vertical-align: middle;
+    width: 150px;
+    font-weight: bold;
+    font-size: 110%;
+    text-align: right;
+    padding-right: 2px;
+}
+
+.own-bets .match-flag {
+    height: 20px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+
+.own-bets .home-goals {
+    width: 25px;
+    display: inline-block;
+    text-align: right;
+    font-weight: bold;
+    vertical-align: middle;
+}
+
+.own-bets .line {
+    display: inline-block;
+    font-weight: bold;
+    vertical-align: middle;
+}
+
+.own-bets .away-goals {
+    width: 25px;
+    display: inline-block;
+    font-weight: bold;
+    vertical-align: middle;
+}
+
+.own-bets .answer-home {
+    margin-left: 15px;
+}
+
+.own-bets .answer-mark {
+    margin-left: 15px;
+}
+
+.own-bets .bet-points {
+    margin-left: 30px;
+    font-weight: bold;
+}
+
+.own-bets .answer {
+    -moz-box-shadow:inset 1px 1px 0px 0px rgb(243,251,235);
+    -webkit-box-shadow:inset 1px 1px 0px 0px rgb(243,251,235);
+    box-shadow:inset 1px 1px 0px 0px rgb(243,251,235);
+    display:inline-block;
+    background-color: rgb(198, 242, 149);
+    border: 1px solid rgb(161,234,81);
+    height: 25px;
+    width: 25px;
+    text-align: center;
+    padding-top: 2px;
+    margin-bottom: 3px;
+    font-weight:bold;
+    font-style:normal;
+    text-decoration:none;
+    vertical-align: middle;
+}
+
+
+.own-bets .right-answer {
+    display: inline-block;
+    -moz-box-shadow:inset 1px 1px 0px 0px rgb(202,239,171);
+    -webkit-box-shadow:inset 1px 1px 0px 0px rgb(202,239,171);
+    box-shadow:inset 1px 1px 0px 0px rgb(202,239,171);
+    background-color: rgb(119,212,42);
+    border:1px solid rgb(44,160,26);
+    font-weight:bold;
+    font-style:normal;
+    text-decoration:none;
+    text-shadow:1px 1px 0px #aade7c;
+    vertical-align: middle;
+    height: 25px;
+    width: 25px;
+    text-align: center;
+    padding-top: 2px;
+    margin-bottom: 3px;
+}
+
+.own-bets .wrong-answer {
+    -moz-box-shadow:inset 0px 1px 0px 0px #f5978e !important;
+    -webkit-box-shadow:inset 0px 1px 0px 0px #f5978e !important;
+    box-shadow:inset 1px 1px 0px 0px #f5978e !important;
+    background-color:#db292c !important;
+    border:1px solid #d02718 !important;
+    text-shadow:1px 1px 0px #db3529 !important;
+    vertical-align: middle;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
