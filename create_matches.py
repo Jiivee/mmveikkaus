@@ -173,11 +173,14 @@ matches.append(Match(yhdysvallat, saksa, group_g, datetime(2014, 6, 26, 19, 00))
 matches.append(Match(portugali, ghana, group_g, datetime(2014, 6, 26, 19, 00)))
 matches.append(Match(etela_korea, belgia, group_h, datetime(2014, 6, 26, 23, 00)))
 matches.append(Match(algeria, venaja, group_h, datetime(2014, 6, 26, 23, 00)))
-
+print "matches created"
 for match in matches:
     db.session.add(match)
+print "matches added"
 
 db.session.commit()
+
+print "db saved"
 
 joni = User('joni', 'joni', 'joni')
 joni.make_admin()
