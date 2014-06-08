@@ -67,7 +67,9 @@ class Match(db.Model):
         self.time = time
         self.home_goals = None
         self.away_goals  = None
+        print "MARK"
         self.mark = None
+        print "mark2"
 
 
     def set_goals(self, home_goals, away_goals):
