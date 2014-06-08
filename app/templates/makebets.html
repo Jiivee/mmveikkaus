@@ -18,9 +18,9 @@
         <div class="match-bet-home-team">Norsunluu-rannikko</div>
         {% endif %}
         <div class="match-bet-texts">
-            <input type="number" id="match-bet-home-{{bet.match_id}}" name="home-{{bet.match_id}}" class="bet-goals" maxlength="2" onkeypress='validate(event)' onKeyDown="if(this.value.length==2) return false;" max="99" value="">
+            <input type="number" id="match-bet-home-{{bet.match_id}}" name="home-{{bet.match_id}}" class="bet-goals" maxlength="2" onkeypress='validate(event)' onKeyDown="if(this.value.length==2 && event.keyCode != 8) return false;" max="99" value="">
             <span>-</span>
-            <input type="text" id="match-bet-away-{{bet.match_id}}" name="away-{{bet.match_id}}" class="bet-goals" maxlength="2" onkeypress='validate(event)' value="">
+            <input type="number" id="match-bet-away-{{bet.match_id}}" name="away-{{bet.match_id}}" class="bet-goals" maxlength="2" onkeypress='validate(event)' onKeyDown="if(this.value.length==2 && event.keyCode != 8) return false;" max="99" value="">
         </div>
         {% if bet.match.away_team.name!='Norsunluurannikko' %}
         <div class="match-bet-away-team">{{bet.match.away_team.name}}</div>
