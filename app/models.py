@@ -58,7 +58,7 @@ class Match(db.Model):
     group = db.relationship("Group")
     home_goals = db.Column(db.Integer)
     away_goals = db.Column(db.Integer)
-    mark = db.Column(db.String(1))
+    mark = db.Column(db.String(50))
 
     def __init__(self, home_team, away_team, group, time):
         self.home_team = home_team
@@ -67,9 +67,7 @@ class Match(db.Model):
         self.time = time
         self.home_goals = None
         self.away_goals  = None
-        print "MARK"
         self.mark = None
-        print "mark2"
 
 
     def set_goals(self, home_goals, away_goals):
