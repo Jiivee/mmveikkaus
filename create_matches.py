@@ -7,6 +7,7 @@ import os
 from datetime import datetime
 _basedir = os.path.abspath(os.path.dirname(__file__))
 os.remove(os.path.join(_basedir, 'app.db'))
+db.drop_all()
 db.create_all()
 
 alankomaat  = Team(u'Alankomaat', u'ned')
