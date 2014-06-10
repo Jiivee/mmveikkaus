@@ -2,19 +2,32 @@
 {% block content %}
 <div class="points">
     <table>
+        <!--
         <tr class="user">
-        {% for match in matches %}
-            <td>{{match.home-team}}</td>
-        {% endfor %}
+            <td></td>
+            {% for match in matches %}
+            <td class="team">{{match.home_team.name}}</td>
+            {% endfor %}
         </tr>
+        -->
 
 
+        <tr class="user">
+            <td class="name">Nimi</td>
+            <td class="total-points">Yhteispisteet</td>
+        </tr>
         {% for user in users %}
         <tr class="user">
-            <td class="name">{{user.name}}</td>
+            <td class="name">
+                <a href="{{ url_for('show_bets_from_user', name=user.name) }}">
+                    {{user.name}}
+                  </a>
+            </td>
+            <!--
             {% for bet in user.match_bets %}
             <td class="point">{{bet.points}}</td>
             {% endfor %}
+             -->
             <td class="total-points">{{user.total_points}}</td>
         </tr>
         {% endfor %}

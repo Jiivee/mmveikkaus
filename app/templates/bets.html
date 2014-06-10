@@ -12,7 +12,7 @@
     <div class="bet">
         <div class="match-time">{{bet.match.get_date()}} {{bet.match.get_time()}}</div>
         <div class="match-group">{{bet.match.group.name}}</div>
-        <img class="match-flag" src="../static/images/flags/{{bet.match.home_team.short}}.png">
+        <img class="match-flag" src="/static/images/flags/{{bet.match.home_team.short}}.png">
         {% if bet.match.home_team.name!='Norsunluurannikko' %}
         <div class="match-home-team">{{bet.match.home_team.name}}</div>
         {% else %}
@@ -36,7 +36,7 @@
         {% else %}
         <div class="match-away-team">Norsunluu-rannikko</div>
         {% endif %}
-        <img class="match-flag" src="../static/images/flags/{{bet.match.away_team.short}}.png">
+        <img class="match-flag" src="/static/images/flags/{{bet.match.away_team.short}}.png">
 
         {% if bet.bet_home_goals != None %}
             {% if bet.match.home_goals != None %}

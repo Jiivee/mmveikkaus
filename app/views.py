@@ -32,6 +32,10 @@ def index():
 @app.route('/makebets/', methods=['GET', 'POST'])
 @login_required
 def betting():
+    start = datetime(2014, 6, 12, 19, 00)
+    now = datetime.now()
+    if now > start:
+        return redirect(url_for("user_bets"))
     if request.method == 'POST':
         print request.form
         for i in range(1, 49): #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! CHANGE TO 49 AFTER TESTING
@@ -48,6 +52,18 @@ def betting():
 @login_required
 def user_bets():
     bets = current_user.match_bets
+    return render_template("bets.html", current_user=current_user, bets=bets)
+
+
+@app.route('/showbets/<name>/', methods=['GET', 'POST'])
+@login_required
+def show_bets_from_user(name):
+    start = datetime(2014, 6, 12, 23, 00)
+    now = datetime.now()
+    if now < start:
+        return redirect(url_for("points"))
+    user = User.query.filter(User.name==name).first()
+    bets = user.match_bets
     return render_template("bets.html", current_user=current_user, bets=bets)
 
 
@@ -80,7 +96,7 @@ def points():
     matches = Match.query.all()
     print matches
     users = User.query.order_by(User.total_points.desc())
-    return render_template("points.html", current_user=current_user, users=users)
+    return render_template("points.html", current_user=current_user, users=users, matches=matches)
 
 
 
