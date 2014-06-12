@@ -32,7 +32,7 @@ def index():
 @app.route('/makebets/', methods=['GET', 'POST'])
 @login_required
 def betting():
-    start = datetime(2014, 6, 12, 19, 00)
+    start = datetime(2014, 6, 12, 20, 00)
     now = datetime.now()
     if now > start:
         return redirect(url_for("user_bets"))
