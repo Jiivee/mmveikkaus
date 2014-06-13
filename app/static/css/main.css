@@ -127,7 +127,7 @@ html, body {
     display: inline-block;
     line-height: 27px;
     margin: 0px -2px 0 -3px;
-    color: #111 !important;
+    color: #333 !important;
 }
 
 .link:hover {
