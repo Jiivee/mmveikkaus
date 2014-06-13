@@ -27,7 +27,17 @@
     </div>
     <div class="content-container">
       <div class="center-div">
-        <div class="center-cont">{% block content %}{% endblock %}
+        <div class="center-cont">
+          {% if current_user.is_authenticated() %}
+          <div class="links">
+            <div class="link-center">
+              <a href="{{ url_for('betting') }}"><div class="link">Veikkaa</div></a>
+              <a href="{{ url_for('user_bets') }}"><div class="link">Oma tulossivu</div></a>
+              <a href="{{ url_for('points') }}"><div class="link">Pisteet</div></a>
+            </div>
+          </div>
+          {% endif %}
+          {% block content %}{% endblock %}
         </div>
       </div>
     </div>

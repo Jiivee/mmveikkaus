@@ -2,9 +2,6 @@
 {% block content %}
 <div class="index">
     {% if current_user.is_authenticated() %}
-    <a href="{{ url_for('betting') }}">Veikkaa</a>
-    <a href="{{ url_for('user_bets') }}">Oma tulossivu</a>
-    <a href="{{ url_for('points') }}">Pisteet</a>
     {% else %}
     <div class="header">Rekisteröidy MM-veikkaukseen</div>
     <form method="POST" action="." class="form">

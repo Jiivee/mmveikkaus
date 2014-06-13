@@ -88,6 +88,53 @@ html, body {
     margin: 10px 20px 10px 0;
 }
 
+.links {
+    margin-bottom: 10px;
+    -moz-box-shadow:inset 1px 1px 0px 0px rgb(202,239,171);
+    -webkit-box-shadow:inset 1px 1px 0px 0px rgb(202,239,171);
+    box-shadow:inset 1px 1px 0px 0px rgb(202,239,171);
+    background-color: rgba(119,212,42,0.8);
+    border:1px solid rgb(44,160,26);
+    font-weight:bold;
+    font-style:normal;
+    text-decoration:none;
+    text-shadow:1px 1px 0px #aade7c;
+    height: 30px;
+    width: calc(100% + 42px);
+    margin-left: -21px;
+
+}
+
+.link-center {
+    padding-left: 20px;
+}
+
+.link {
+    -moz-box-shadow:inset 1px 1px 0px 0px rgb(202,239,171);
+    -webkit-box-shadow:inset 1px 1px 0px 0px rgb(202,239,171);
+    box-shadow:inset 1px 1px 0px 0px rgb(202,239,171);
+    background-color: rgba(119,212,42,0);
+    border-left:1px solid rgb(44,160,26);
+    border-right:1px solid rgb(44,160,26);
+    font-weight:bold;
+    font-style:normal;
+    text-decoration:none;
+    text-shadow:1px 1px 0px #aade7c;
+    height: 29px;
+    width: 130px;
+    vertical-align: middle;
+    padding-left: 5px;
+    display: inline-block;
+    line-height: 27px;
+    margin: 0px -2px 0 -3px;
+    color: #111 !important;
+}
+
+.link:hover {
+    background-color: rgba(119,212,42,1);
+}
+
+
 
 
 .content-container {
@@ -100,14 +147,14 @@ html, body {
 }
 
 .center-cont {
-    padding: 20px;
+    padding: 0 20px 20px 20px;
     border: 1px solid rgba(255,255,255,0.1);
     background: rgba(255, 255, 255, 0.7);
     -webkit-box-shadow: -3px 0px 10px 0px #333, 3px 0px 10px 0px #333;
     -moz-box-shadow: -3px 0px 10px 0px #333, 3px 0px 10px 0px #333;
     box-shadow: -3px 0px 10px 0px #333, 3px 0px 10px 0px #333;
     font-size: 110%;
-    min-height: calc(100% - 55px);;
+    min-height: calc(100% - 55px);
 }
 
 .match-bet-header {
