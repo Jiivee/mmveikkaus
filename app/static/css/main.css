@@ -1,25 +1,14 @@
 html, body {
     margin: 0;
     font-family: 'Open Sans', sans-serif !important;
-    /*
     background: url('../images/grass.jpg') no-repeat fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    */
     box-sizing: border-box
 }
 
-.bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: -1000;
-    /* Preserve aspet ratio */
-    min-width: 100%;
-    min-height: 100%;
-}
 
 .input-field {
     background-color: #eafbd9;
