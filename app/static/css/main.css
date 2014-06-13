@@ -439,6 +439,11 @@ input[type=radio]:checked + label {
     padding: 0 40px 0 40px;
 }
 
+.own-bets .bet-user-name {
+    font-size: 120%;
+    font-weight: bold;
+}
+
 .own-bets .header {
     font-size: 115%;
     font-weight: bold;

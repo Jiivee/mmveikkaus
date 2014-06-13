@@ -51,8 +51,9 @@ def betting():
 @app.route('/showbets/', methods=['GET', 'POST'])
 @login_required
 def user_bets():
-    bets = current_user.match_bets
-    return render_template("bets.html", current_user=current_user, bets=bets)
+    bets = MatchBet.query.filter(MatchBet.user_id==current_user.id).order_by(MatchBet.id)
+    name = current_user.name
+    return render_template("bets.html", current_user=current_user, bets=bets, name=name)
 
 
 @app.route('/showbets/<name>/', methods=['GET', 'POST'])
@@ -63,8 +64,9 @@ def show_bets_from_user(name):
     if now < start:
         return redirect(url_for("points"))
     user = User.query.filter(User.name==name).first()
-    bets = user.match_bets
-    return render_template("bets.html", current_user=current_user, bets=bets)
+    bets = MatchBet.query.filter(MatchBet.user_id==user.id).order_by(MatchBet.id)
+    name = user.name
+    return render_template("bets.html", current_user=current_user, bets=bets, name=name)
 
 
 @app.route('/allmatches/', methods=['GET', 'POST'])
