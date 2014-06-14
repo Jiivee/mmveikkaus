@@ -13,31 +13,33 @@
     <div class="bet">
         <div class="match-time">{{bet.match.get_date()}} {{bet.match.get_time()}}</div>
         <div class="match-group">{{bet.match.group.name}}</div>
-        <img class="match-flag" src="/static/images/flags/{{bet.match.home_team.short}}.png">
-        {% if bet.match.home_team.name!='Norsunluurannikko' %}
-        <div class="match-home-team">{{bet.match.home_team.name}}</div>
-        {% else %}
-        <div class="match-home-team">Norsunluu-rannikko</div>
-        {% endif %}
+        <a href="{{ url_for('match', id=bet.match.id) }}">
+            <img class="match-flag" src="/static/images/flags/{{bet.match.home_team.short}}.png">
+            {% if bet.match.home_team.name!='Norsunluurannikko' %}
+            <div class="match-home-team">{{bet.match.home_team.name}}</div>
+            {% else %}
+            <div class="match-home-team">Norsunluu-rannikko</div>
+            {% endif %}
 
-        {% if bet.match.home_goals != None %}
-        <span class="home-goals">{{bet.match.home_goals}}</span>
-        {% else %}
-        <span class="home-goals">X</span>
-        {% endif %}
-        <span class="line">-</span>
-        {% if bet.match.away_goals != None %}
-        <span class="away-goals">{{bet.match.away_goals}}</span>
-        {% else %}
-        <span class="away-goals">X</span>
-        {% endif %}
+            {% if bet.match.home_goals != None %}
+            <span class="home-goals">{{bet.match.home_goals}}</span>
+            {% else %}
+            <span class="home-goals">X</span>
+            {% endif %}
+            <span class="line">-</span>
+            {% if bet.match.away_goals != None %}
+            <span class="away-goals">{{bet.match.away_goals}}</span>
+            {% else %}
+            <span class="away-goals">X</span>
+            {% endif %}
 
-        {% if bet.match.away_team.name!='Norsunluurannikko' %}
-        <div class="match-away-team">{{bet.match.away_team.name}}</div>
-        {% else %}
-        <div class="match-away-team">Norsunluu-rannikko</div>
-        {% endif %}
-        <img class="match-flag" src="/static/images/flags/{{bet.match.away_team.short}}.png">
+            {% if bet.match.away_team.name!='Norsunluurannikko' %}
+            <div class="match-away-team">{{bet.match.away_team.name}}</div>
+            {% else %}
+            <div class="match-away-team">Norsunluu-rannikko</div>
+            {% endif %}
+            <img class="match-flag" src="/static/images/flags/{{bet.match.away_team.short}}.png">
+        </a>
 
         {% if bet.bet_home_goals != None %}
             {% if bet.match.home_goals != None %}

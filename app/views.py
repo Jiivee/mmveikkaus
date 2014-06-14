@@ -19,9 +19,10 @@ def load_user(id):
 def index():
     form = RegistrationForm()
     if form.validate_on_submit():
-        user = User(form.name.data, form.email.data, form.password.data)
-        db.session.add(user)
-        db.session.commit()
+        #NO MORE ABLE TO REGISTER
+        #user = User(form.name.data, form.email.data, form.password.data)
+        #db.session.add(user)
+        #db.session.commit()
         return redirect(url_for("login"))
     groups = Group.query.all()
     time_now = datetime.now()
@@ -76,20 +77,24 @@ def all_matches():
     return render_template("allmatches.html", current_user=current_user, matches=matches)
 
 
-@app.route('/setresult/<id>/', methods=['GET', 'POST'])
+@app.route('/match/<id>/', methods=['GET', 'POST'])
 @login_required
-def set_match_result(id):
+def match(id):
     match = Match.query.filter(Match.id==id).first()
-    if current_user.role != 1:
-        return redirect(url_for("all_matches"))
+    bets = MatchBet.query.filter(MatchBet.match_id==match.id).order_by(MatchBet.points.desc())
+    users = {}
+    players = User.query.all()
+    for player in players:
+        users[player.id] = player.name
+
     if request.method == 'POST':
         print request.form
         home_goals = str(request.form['home-goals'])
         away_goals = str(request.form['away-goals'])
         match.set_goals(home_goals, away_goals)
         db.session.commit()
-        return redirect(url_for("all_matches"))
-    return render_template("setresult.html", current_user=current_user, match=match)
+        return redirect(url_for('match', id=match.id))
+    return render_template("match.html", current_user=current_user, match=match, bets=bets, users=users)
 
 
 @app.route('/points/', methods=['GET', 'POST'])
@@ -122,6 +127,7 @@ def login():
         user_email = form.email.data
         user_password = form.password.data
         user = User.query.filter(User.email==user_email, User.password==user_password).first()
+        remember_me = True
         login_user(user)
         return redirect(url_for("index"))
     return render_template("login.html", current_user=current_user, form=form)

@@ -31,6 +31,8 @@
           {% if current_user.is_authenticated() %}
           <div class="links">
             <div class="link-center">
+              <a href="{{ url_for('index') }}"><div class="link">Etusivu</div></a>
+              <a href="{{ url_for('all_matches') }}"><div class="link">Kaikki Ottelut</div></a>
               <a href="{{ url_for('betting') }}"><div class="link">Veikkaa</div></a>
               <a href="{{ url_for('user_bets') }}"><div class="link">Oma tulossivu</div></a>
               <a href="{{ url_for('points') }}"><div class="link">Pisteet</div></a>

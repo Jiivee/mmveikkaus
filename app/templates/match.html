@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="match">
+    <div class="index">
+        <form method="POST" action="." class="form">
+            <div class="next-match">
+                <div class="match-time">{{match.get_date()}} {{match.get_time()}}</div>
+                <div class="match-group">{{match.group.name}}</div>
+                <img class="match-flag" src="/static/images/flags/{{match.home_team.short}}.png">
+                {% if match.home_team.name!='Norsunluurannikko' %}
+                <div class="match-home-team">{{match.home_team.name}}</div>
+                {% else %}
+                <div class="match-home-team">Norsunluu-rannikko</div>
+                {% endif %}
+                <div class="match-bet-texts">
+                    {% if current_user.role==1 %}
+                    <input type="text" name="home-goals" class="bet-goals" maxlength="2" onkeypress='validate(event)' {% if match.home_goals != None %} value="{{match.home_goals}}" {% endif %}>
+                    <span>-</span>
+                    <input type="text" name="away-goals" class="bet-goals" maxlength="2" onkeypress='validate(event)' {% if match.away_goals != None %} value="{{match.away_goals}}" {% endif %}>
+                    {% else %}
+                        {% if match.home_goals != None %}
+                        <span class="home-goals">{{match.home_goals}}</span>
+                        {% else %}
+                        <span class="home-goals">X</span>
+                        {% endif %}
+                        <span class="line">-</span>
+                        {% if match.away_goals != None %}
+                        <span class="away-goals">{{match.away_goals}}</span>
+                        {% else %}
+                        <span class="away-goals">X</span>
+                        {% endif %}
+                    {% endif %}
+                </div>
+                {% if match.away_team.name!='Norsunluurannikko' %}
+                <div class="match-away-team">{{match.away_team.name}}</div>
+                {% else %}
+                <div class="match-away-team">Norsunluu-rannikko</div>
+                {% endif %}
+                <img class="match-flag" src="/static/images/flags/{{match.away_team.short}}.png">
+                {% if current_user.role==1 %}
+                <input type="submit" name="submit" value="Tallenna" class="save-button btn btn-success">
+                {% endif %}
+            </div>
+        </form>
+        <div class="header">Veikkaukset</div>
+        {% for bet in bets %}
+        <div class="own-bets bet-padding">
+            <div class="name" >{{users[bet.user_id]}}</div>
+                {% if bet.bet_home_goals != None %}
+                {% if bet.match.home_goals != None %}
+                    {% if bet.bet_home_goals == bet.match.home_goals %}
+                    <span class="answer-home right-answer">{{bet.bet_home_goals}}</span>
+                    {% else %}
+                    <span class="answer-home right-answer wrong-answer">{{bet.bet_home_goals}}</span>
+                    {% endif %}
+                {% else %}
+                    <span class="answer-home answer">{{bet.bet_home_goals}}</span>
+                {% endif %}
+            {% else %}
+            <span class="answer-home answer">X</span>
+            {% endif %}
+            <span class="line">-</span>
+            {% if bet.bet_away_goals != None %}
+                {% if bet.match.away_goals != None %}
+                    {% if bet.bet_away_goals == bet.match.away_goals %}
+                    <span class="away-goals right-answer">{{bet.bet_away_goals}}</span>
+                    {% else %}
+                    <span class="away-goals right-answer wrong-answer">{{bet.bet_away_goals}}</span>
+                    {% endif %}
+                {% else %}
+                    <span class="answer">{{bet.bet_away_goals}}</span>
+                {% endif %}
+            {% else %}
+            <span class="answer">X</span>
+            {% endif %}
+
+            {% if bet.mark != None %}
+                {% if bet.match.mark != None %}
+                    {% if bet.mark == bet.match.mark %}
+                        <span class="answer-mark right-answer">{{bet.mark}}</span>
+                    {% else %}
+                        <span class="answer-mark right-answer wrong-answer">{{bet.mark}}</span>
+                    {% endif %}
+                {% else %}
+                    <span class="answer-mark answer">{{bet.mark}}</span>
+                {% endif %}
+            {% else %}
+                <span class="answer-mark answer"></span>
+            {% endif %}
+            <span class="bet-points">{{bet.points}}</span>
+
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

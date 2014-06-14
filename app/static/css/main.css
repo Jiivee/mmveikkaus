@@ -9,6 +9,25 @@ html, body {
     box-sizing: border-box
 }
 
+.index a {
+    text-decoration: none;
+    color: #333 !important;
+}
+
+.index a:hover {
+    text-decoration: none !important;
+    color: #000 !important;
+}
+
+.own-bets a {
+    text-decoration: none;
+    color: #333 !important;
+}
+
+.own-bets a:hover {
+    text-decoration: none !important;
+    color: #000 !important;
+}
 
 .input-field {
     background-color: #eafbd9;
@@ -662,11 +681,26 @@ input[type=radio]:checked + label {
 }
 
 
+.match {
+    padding-top: 30px;
+}
 
+.match .save-button {
+    padding: 3px 6px !important;
+    margin-left: 3px;
+}
 
+.match .name {
+    display: inline-block;
+    font-size: 110%;
+    font-weight: bold;
+    margin-left: -10px;
+    width: 60px;
+}
 
-
-
+.match .bet-padding {
+    padding-top: 10px;
+}
 
 
 
