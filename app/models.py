@@ -105,7 +105,6 @@ class Match(db.Model):
                 right_answers += 1
             if right_answers == 3:
                 points += 1
-            print points
             user = User.query.filter(User.id==bet.user_id).first()
             user.total_points -= bet.points
             bet.set_points(points)
@@ -116,7 +115,7 @@ class Match(db.Model):
         return date
 
     def get_time(self):
-        time = self.time.strftime("%H:%M")
+        time = self.time.strftime("%H:%M %a")
         return time
 
 

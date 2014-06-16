@@ -2,14 +2,7 @@ html, body {
     margin: 0;
     font-family: 'Open Sans', sans-serif !important;
     background: url('../images/grass4_medium.png');
-    /*
-    background: url('../images/grass.jpg') no-repeat fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    */
-    box-sizing: border-box
+    box-sizing: border-box;
 }
 
 .index a {
