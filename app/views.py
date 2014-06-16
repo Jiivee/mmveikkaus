@@ -127,8 +127,7 @@ def login():
         user_email = form.email.data
         user_password = form.password.data
         user = User.query.filter(User.email==user_email, User.password==user_password).first()
-        remember_me = True
-        login_user(user)
+        login_user(user, remember=True)
         return redirect(url_for("index"))
     return render_template("login.html", current_user=current_user, form=form)
 
