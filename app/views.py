@@ -19,10 +19,9 @@ def load_user(id):
 def index():
     form = RegistrationForm()
     if form.validate_on_submit():
-        #NO MORE ABLE TO REGISTER
-        #user = User(form.name.data, form.email.data, form.password.data)
-        #db.session.add(user)
-        #db.session.commit()
+        user = User(form.name.data, form.email.data, form.password.data)
+        db.session.add(user)
+        db.session.commit()
         return redirect(url_for("login"))
     groups = Group.query.all()
     time_now = datetime.now()
