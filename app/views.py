@@ -35,8 +35,8 @@ def index():
 def betting():
     start = datetime(2014, 6, 12, 20, 00)
     now = datetime.now()
-    if now > start:
-        return redirect(url_for("user_bets"))
+    #if now > start:
+        #return redirect(url_for("user_bets"))
     if request.method == 'POST':
         print request.form
         for i in range(1, 49): #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! CHANGE TO 49 AFTER TESTING
